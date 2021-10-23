@@ -1,0 +1,25 @@
+<div class="dataContainer mt-4">
+  <form [formGroup]="newBucketForm" (ngSubmit)="createBucket()">
+  <div class="d-flex justify-content-start">
+    <div class="d-flex flex-column flex-fill me-4">
+      <label for="bucketName" class="required">{{'bucketName'|translate}}</label>
+      <input type="text" id="bucketName" formControlName="bucketName">
+    </div>
+    <div class="d-flex flex-column flex-fill">
+      <label for="location" class="required">{{'location'|translate}}</label>
+      <select class="custom-select" id="location" formControlName="location">
+        <option *ngFor="let location of locations"  [ngValue]="location">{{location.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="d-flex align-items-center mt-2">
+    <button type="submit" [disabled]="!newBucketForm.valid"  class="btn btn-primary">{{'createBucket' | translate}}</button>
+    <div class="ms-2">
+      <input class="form-check-input me-1" type="checkbox" value="" id="invalidCheck2" formControlName="addAnother" >
+      <label class="form-check-label" for="invalidCheck2" >
+        {{'createAnother'|translate}}
+      </label>
+    </div>
+  </div>
+  </form>
+</div>

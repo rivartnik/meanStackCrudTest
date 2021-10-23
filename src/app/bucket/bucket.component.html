@@ -1,0 +1,21 @@
+
+<div class="d-flex justify-content-between">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink routerLink="files" routerLinkActive="active" (click)="currentRoute=1">{{'files'|translate}}</a>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink  routerLink="details" routerLinkActive="active"  (click)="currentRoute=2">{{'details'|translate}}</a>
+    </li>
+  </ul>
+  <div *ngIf="currentRoute===2">
+    <button class="btn btn-danger btn-sm" type="button" [disabled]="showSpinner" (click)="openModal()" >
+      <span *ngIf="showSpinner" class="spinner-border spinner-border-sm me-1" role="status" ></span>
+      <span>{{'deleteBucket' | translate}}</span>
+    </button>
+
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

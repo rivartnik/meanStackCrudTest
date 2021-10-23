@@ -1,0 +1,30 @@
+<div>
+  <h3>{{'bucketList'|translate}}</h3>
+
+  <app-add-bucket  *ngIf="addNewData" (saving)="changeSpinner($event)" (onSave)="newBucketInserted($event)"> </app-add-bucket>
+
+  <div class="dataContainer mt-4">
+    <div class="d-flex col justify-content-between">
+      <h5>{{'allBuckets' | translate}}({{buckets.length}})</h5>
+      <button type="button" (click)="addNewBucket()" class="btn btn-primary">{{'createNewBucket' | translate}}</button>
+    </div>
+    <table class="table table-hover table-striped">
+      <thead>
+      <tr>
+        <th scope="col">{{'name'|translate}}</th>
+        <th scope="col">{{'location' | translate}}</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="!showSpinner">
+      <tr *ngFor="let bucket of buckets" (click)="getDetailsData(bucket)">
+        <td>{{bucket.name}}</td>
+        <td>{{bucket.location?.name}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div *ngIf="buckets.length==0 && !showSpinner" class="d-flex justify-content-center nodata">{{'noData'|translate}}</div>
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+  </div>
+
+</div>
+

@@ -1,0 +1,34 @@
+<div class="dataContainer">
+  <div class="d-flex col justify-content-between">
+    <h5>{{'allFiles' | translate}}({{files.length}})</h5>
+    <div>
+      <button type="button" [disabled]="files.length==0" (click)="openModal()" class="btn btn-danger me-4">{{'deleteObject' | translate}}</button>
+      <button type="button" (click)="filePicker.click()" class="btn btn-primary">{{'uploadObject' | translate}}</button>
+      <input type="file" #filePicker (change)="onFilePicked($event)">
+    </div>
+  </div>
+  <table class="table table-hover table-striped" style="table-layout: fixed;">
+    <thead>
+    <tr>
+      <th style="width: 600px" scope="col">{{'name'|translate}}</th>
+      <th scope="col">{{'lastModified' | translate}}</th>
+      <th scope="col">{{'size' | translate}}</th>
+    </tr>
+    </thead>
+
+    <tbody *ngIf="!showSpinner">
+    <tr *ngFor="let file of files" >
+      <td style="width: 600px"  class="textOverflow" title="{{file.name}}">{{file.name}}</td>
+      <td>{{file.last_modified | date:'dd.MM.yyyy' }}</td>
+      <td>{{file.size | toUnits}}</td>
+    </tr>
+    </tbody>
+
+  </table>
+  <div *ngIf="files.length==0 && !showSpinner" class="d-flex justify-content-center nodata">{{'noData'|translate}}</div>
+  <app-spinner *ngIf="showSpinner"></app-spinner>
+
+</div>
+
+
+<app-modal *ngIf="showModal"></app-modal>

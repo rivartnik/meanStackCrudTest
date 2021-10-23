@@ -1,0 +1,16 @@
+<div class="dataContainer">
+
+  <div class="d-flex">
+    <div>
+      <div>{{'bucketName'|translate}}:</div>
+      <div>{{'location'|translate}}:</div>
+      <div>{{'storageSize'|translate}}:</div>
+    </div>
+    <div class="ms-5">
+      <div>{{bucketDetails?.name}}</div>
+      <div>{{bucketDetails?.location?.name}}</div>
+      <div>{{totalSize| toUnits }}</div>
+    </div>
+
+  </div>
+</div>

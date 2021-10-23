@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100vh; display: flex; flex-direction: column }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.dataContainer{
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+label {
+  &.required:after {
+    content: " *";
+  }
+}
+.flx1{
+  flex: 1;
+}
+.flx2{
+  flex: 2;
+}
+.textOverflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nodata{
+  font-size: 16px;
+  text-transform: uppercase;
+}
